@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- 
+Stwórz kontener z przykładową nawigacją, który domyślnie nie będzie widoczny. Może on
+znajdować się na samej górze strony lub w sidebarze. Następnie umieść na stronie
+przycisk typu “hamburger menu” ☰, po kliknięciu którego wysunie się wcześniej ukryte
+menu. Animacja jaką zastosujesz, zależy od Ciebie. Ponowne kliknięcie przycisku powinno
+chować nawigację.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>javascriptt4z2</title>
+	<style type="text/css">
+	body
+	{
+		margin: 0;
+		padding: 0;
+		font-famiy: arial;
+		background: #fff;
+	}
+	.sidebar
+	{
+		position: fixed;
+		top: 100px;
+		left: -250px;
+		background: #262626;
+		width: 250px;
+		height: 250px;
+		transition: .3s;
+	}
+	.active
+	{
+		left: 0;
+	}
+	ul
+	{
+		margin: 0;
+		padding: 20px 0;
+	}
+	ul li
+	{
+		list-style: none;
+	}
+	ul li a
+	{
+		padding: 10px 20px;
+		color: #fff;
+		display: block;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(0,0,0,/2);
+	}
+	.sidebarBtn
+	{
+		position: absolute;
+		top: 0;
+		right: -50px;
+		width: 50px;
+		height:50px;
+		box-sizing: border-box;
+		cursor: pointer;
+		background: #f5f5f5;
+		border: none;
+		outline: none;
+	}
+
+	
+	</style>
+  </head>
+  <body>
+  <script  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <h1>Pokazywanie elementów i animacje</h1>
+<div class="sidebar">
+	<ul>
+		<li><a href="#">O firmie</a></li>
+		<li><a href="#">Oferta</a></li>
+		<li><a href="#">Projekty</a></li>
+		<li><a href="#">Cennik</a></li>
+		<li><a href="#">Kontakt</a></li>
+	</ul>
+	<button class="sidebarBtn">
+		<span>Menu</span>
+	</button>
+	
+</div>
+<script>
+$(document).ready(function() {
+	$('.sidebarBtn').click(function(){
+		$('.sidebar').toggleClass('active');
+	})
+})
+</script>
+</body>
+</html>

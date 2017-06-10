@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- 
+Podaj przykłady selektorów, które pozwolą znaleźć na stronie następujące elementy:
+- wszystkie elementy <div>, posiadające zarówno klasę grid oraz klasę grid-12.
+- wszystkie elementy <a>, których atrybut href zaczyna się na “http”, znajdujące się w
+elemencie o klasie nav
+- wszystkie elementy <input>, których typ to radio lub checkbox oraz dodatkowo nie są
+aktualnie zaznaczone (checked).
+- wyłącznie pierwszy element <p>, który jest pusty (nie zawiera dzieci) oraz znajduje się w
+elemencie <div> z identyfikatorem text
+- wszystkie elementy z klasą pagination-item, które nie są elementem <span>
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>javascriptt4z1</title>
+  </head>
+  <body>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <h1>Selektory w jQuery</h1>
+
+</div>
+<script>
+(function($) {
+
+//Pierwszy Selektor
+$("div.grid.grid-12");
+
+//Drugi Selektor
+$(".nav a[href^='http']");
+
+//Trzeci Selektor
+$("input:radio, input:checkbox").not(":checked");
+
+//Czwarty Selektor
+$("div#text p:empty");
+
+//Piąty Selektor
+$(".pagination-item:not(span)");
+		
+})(jQuery);
+</script>
+
+</body>
+</html>

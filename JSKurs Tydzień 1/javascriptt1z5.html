@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+Utwórz funkcję o nazwie getDate, która po wywołaniu zwróci aktualną, sformatowaną datę.
+Data powinna być w formacie dd.mm.rrrr, czyli np. 17.04.2017.
+Przykładowe użycie tej funkcji powinno wyglądać następująco:
+getDate(); // zwraca np. “17.04.2017”
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Zadanie 5 Tydzień 1</title>
+  </head>
+  <body>
+<script>
+
+function getDate() {
+		var c= new Date();
+		var d = c.getDate() + "." + (c.getMonth() + 1) + "." + c.getFullYear();
+		return d;
+};
+console.log(getDate());
+</script>
+</body>
+</html>

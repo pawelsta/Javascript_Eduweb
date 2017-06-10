@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- 
+Stwórz prosty walidator formularza, który zawierał będzie pola <input> o typach “text”,
+“email”, “number” oraz element <textarea>. Dodaj do elementu <form> atrybut
+novalidate, aby wyłączyć domyślną walidację przeglądarki. Od Ciebie zależy, czy chcesz
+wyświetlać komunikaty o błędach czy tylko podświetlać niepoprawnie uzupełnione pola np.
+na czerwono. Za poprawnie uzupełnione pole <input> o typie “text” lub pole <textarea>
+uznajemy takie, które ma wpisany przynajmniej jeden znak. W przypadku pola o typie
+“email” sprawdź czy zawiera ono znak @, a w przypadku pola o typie “number” czy podana
+wartość jest liczbą (pamiętaj, że DOM zwróci Ci zawsze wartość o typie String, więc
+musisz znaleźć sposób, jak sprawdzić czy string ten zawiera wyłącznie liczbę). -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Zadanie 2 Tydzień 2</title>
+  </head>
+  <body>
+  <h1>Walidator formularza</h1>
+  <form action="#" style="text-align: right; clear: both; float:left; margin-right:15px;" novalidate>
+ 
+		<p>
+        <label>Nazwisko</label>
+        <input id="nazwisko" type="text" placeholder="Wpisz Nazwisko" />
+		</p>
+		
+		<p>
+        <label>Email</label>
+        <input id="email" type="email" placeholder="Wpisz E-mail" />
+		</p>
+		
+		<p>
+        <label>Numer Telefonu</label>
+        <input id="number" type="tel" placeholder="Wpisz numer telefonu" />
+		</p>
+		
+		<p>
+        <label>Uwagi</label>
+        <textarea id="notes"> </textarea>
+		</p>
+
+        <input id="validator" type="submit" value="Wyślij" />
+	</form>
+
+<script>
+var button = document.getElementById('validator');
+ 
+validator.addEventListener('click', function(e) {
+    var labelNumber = document.getElementById('number');
+    var labelNazwisko = document.getElementById('nazwisko');
+    var labelEmail = document.getElementById('email');
+    var labelUwagi = document.getElementById('notes');	
+	
+    if (labelNazwisko.value.match(/^.{1,}/) == null) {
+        e.preventDefault();
+        console.log('W polu "Nazwisko" musisz podać swoje dane');
+    } else {
+        console.log(labelNazwisko.value);
+    }
+	
+    if (labelNumber.value.match(/^[0-9]+$/) == null) {
+        e.preventDefault();
+        console.log('W polu "Telefon" musisz podać cyfry');
+    } else {
+        console.log(labelNumber.value);
+    }
+	
+	if (labelEmail.value.match(/@/) == null) {
+        e.preventDefault();
+        console.log('W polu "Email" musisz podać swój email');
+    } else {
+        console.log(labelEmail.value);
+    }
+	
+	if (labelUwagi.value.match(/^.{1,}/) == null) {
+        e.preventDefault();
+        console.log('W polu "Uwagi" wpisz swoje spostrzeżenia');
+    } else {
+        console.log(labelUwagi.value);
+    }
+});
+</script>
+
+</body>
+</html>

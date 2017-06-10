@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Stwórz aplikację, która zawierać będzie prosty formularz z wyłącznie jednym polem
+<input>, a także przyciskiem <button>. Napisz kod tak, aby po wpisaniu informacji do
+pola i po wciśnięciu przycisku, wstawić wpisane informacje do nowego elementu <li>, a
+ten element do wcześniej wstawionego elementu <ul>. W ten sposób za każdym razem,
+gdy zostanie wpisane np. jakieś imię, pojawi się ono na stronie. Dodatkowo zadbaj o to, by
+jeśli nic nie zostało wpisane do pola, nie wstawiać na stronę pustego elementu <li>.
+-->
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title> javascriptt4z3 </title>
+</head>
+<body>
+<h1>LISTA MIAST</h1>
+<form>
+<input type="text" name="przedmiot" id="input">
+<button>Dodaj</button>
+</form>
+
+<hr>
+
+<ul id="lista">
+<li>Lizbona</li>
+<li>Madryt</li>
+<li>Monachium</li>
+
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+    	     $('button').on('click', function(e) {
+    	     e.preventDefault();
+			 var nowy_przedmiot = $('#input').val();
+			 if(nowy_przedmiot == ""){
+			 return false;
+			}
+			 $('#lista').append('<li>'+nowy_przedmiot+'</li>');
+    	     });
+        });
+</script>
+
+</body>
+</html>

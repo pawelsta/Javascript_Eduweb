@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- 
+Stwórz projekt, który po uruchomieniu odpowiedniej funkcji, pozwoli na odliczanie
+od 10 do 0. Wszystkie wartości powinny być wyświetlane na stronie, a czas pomiędzy
+zmianą wartości powinien wynosić 1 sekundę. Choć cały Twój kod może być podzielony na
+wiele funkcji, jedna z nich powinna uruchamiać proces odliczania. Przy wywołaniu tej
+funkcji, daj możliwość przekazania innej funkcji jako argument. Przekazaną funkcję
+wywołaj, gdy licznik osiągnie wartość 0.
+Istotą przekazywania jednej funkcji do drugiej (w tym przypadku nazwalibyśmy ją funkcją
+callback) jest to, aby dać użytkownikowi naszego kodu pewną gotową funkcjonalność
+(odliczanie od 10 do 0), ale także możliwość dodania czegoś od siebie, tj. wykonania
+własnej funkcji po zakończeniu odliczania. W przekazanej funkcji możesz wpisać po prostu
+console.log(“Odliczanie zakończone!”). -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Zadanie 2 Tydzień 3</title>
+  </head>
+  <body>
+  <h1>Odliczanie od 10 do 0</h1>
+	<div>
+	<button onclick="countdown()">Rozpocznij odliczanie</button>
+	<input type="text" id="licznik">
+	</div>
+<script>
+function countdown() {
+    var x = document.getElementById("licznik");
+    setTimeout(function(){ x.value="10 seconds" }, 1000);
+    setTimeout(function(){ x.value="9 seconds" }, 2000);
+	setTimeout(function(){ x.value="8 seconds" }, 3000);
+	setTimeout(function(){ x.value="7 seconds" }, 4000);
+	setTimeout(function(){ x.value="6 seconds" }, 5000);
+	setTimeout(function(){ x.value="5 seconds" }, 6000);
+	setTimeout(function(){ x.value="4 seconds" }, 7000);
+	setTimeout(function(){ x.value="3 seconds" }, 8000);
+	setTimeout(function(){ x.value="2 seconds" }, 9000);
+	setTimeout(function(){ x.value="1 seconds" }, 10000);
+	setTimeout(function(){popup()}, 11000);
+}
+function popup() {
+var x = document.getElementById("licznik");
+x.value="0 seconds"
+setTimeout(function(){alert ('Odliczanie zakończone!')}, -10000);
+}
+</script>
+
+</body>
+</html>

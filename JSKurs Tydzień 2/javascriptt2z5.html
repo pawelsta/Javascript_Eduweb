@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- 
+Stwórz funkcję o nazwie debounce, która przyjmie przy wywołaniu dwa argumenty.
+Pierwszy z nich to inna funkcja do późniejszego wywołania, a drugi to czas w
+milisekundach. Po takim wywołaniu, funkcja ta powinna zwrócić nową funkcję, którą
+można zapisać np. w zmiennej. Następnie tę nową funkcję będzie można wielokrotnie
+wywoływać (a ona powinna wywołać pierwotnie przekazaną funkcję), jednak jeśli czas
+pomiędzy poszczególnymi wywołaniami będzie krótszy, niż podany wcześniej (wspomniany
+argument z czasem w milisekundach), to funkcja nie powinna nic zrobić, ale ustawić licznik
+na kolejne Xms i dopiero wtedy się wywołać. -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Zadanie 2 Tydzień 5</title>
+  </head>
+  <body>
+  <h1>Funkcja debounce</h1>
+<script>
+(function() {
+    function debounce(fn, time, immediate) {
+        var timeout;
+		// docelowo powinna być wywoływana
+        // funkcja fn w ten sposób fn()
+ 
+        // część kodu tutaj
+ 
+        return function() {
+            // pozostały kod tutaj
+			var context = this, args = arguments;
+			var later = function() {
+			timeout = null;
+			if (!immediate) fn.apply(context, args);
+			};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, time);
+		if (callNow) fn.apply(context, args);
+        };
+    };
+ 
+    var handleScroll = debounce(function() {
+        console.log("Scrollujemy!");
+    }, 200);
+ 
+    // w tym miejscu pod handleScroll
+    // powinna być nowa funkcja
+ 
+    // Przypisanie zdarzenia "scroll"
+    window.addEventListener("scroll", handleScroll, false);
+ 
+    // Możesz również przetestować funkcję
+    // ze zdarzeniem "resize" skalując okno
+    var handleResize = debounce(function() {
+        console.log("Zmieniamy rozmiar okna!");
+    }, 100);
+ 
+    window.addEventListener("resize", handleResize, false);
+ 
+})();
+</script>
+
+</body>
+</html>

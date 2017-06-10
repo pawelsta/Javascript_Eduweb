@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+<title>javascriptt3z4</title>
+<h1>Funkcja getJSON</h1>
+<body>
+<!--
+Mając już rozwiązanie zadania trzeciego, przepisz swój kod tak, aby stworzyć nową funkcję
+o nazwie getJSON. Idea działania i użycie będą bardzo podobne:
+getJSON("url", function(data) {
+console.log("Sukces");
+console.log(data);
+// typeof data powinno zwrócić “object”
+}, function(err) {
+console.log("Wystąpił błąd!");
+console.log(err);
+});
+Różnica jest taka, że tym razem pod parametrem data przekazanym w funkcji callback,
+powinien się znajdować javascriptowy obiekt, a nie string przysłany z serwera. Serwer,
+który przygotowaliśmy pod tym adresem: http://code.eduweb.pl/bootcamp/users/ działa tak,
+że po otrzymaniu standardowego zapytania GET, np. kiedy wpiszesz ten adres w
+przeglądarce lub wyślesz zapytanie Ajaxem, zwróci dane zawarte w kodzie HTML. Jeśli
+jednak przy wysyłaniu zapytania dodasz nagłówek Accept: application/json, to serwer
+zwróci te same dane, ale w formacie JSON (bez kodu HTML). Z poziomu Twojego kodu
+JavaScript, otrzymane Ajaxem dane to cały czas typ String, ale za pomocą metody
+JSON.parse możesz ten string łatwo zamienić na javascriptowy obiekt. To jest właśnie
+Twoje zadanie. Wysyłając żądanie do serwera, dodaj wspomniany wcześniej nagłówek za
+pomocą metody setRequestHeader, a otrzymane dane sparsuj za pomocą JSON.parse i
+dopiero wtedy przekaż jako parametr data do funkcji callback.
+-->
+
+<button id='button'>Zapytanie Ajax</button>
+<p id='wynik'> </p>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<script>
+(function() {
+
+function getJSON(url, success, failure) {
+
+	var x = new XMLHttpRequest();
+	
+	
+	x.open("GET", url, true);
+	
+	x.setRequestHeader ("Accept", "application/json");
+	
+	x.onload = function() {
+	
+	if(x.status==200) {
+		success(x.responseText);
+	} else {
+		failure (new Error("Wystąpił błąd numer: " + x.status) );
+		}
+	};
+	
+	x.onerror = function(e) {
+		failure (new Error("Wystąpił krytyczny błąd") );
+	};
+	
+	x.send();
+	
+	}
+
+var button = document.querySelector("#button");
+
+var wynik = document.querySelector("#wynik");
+
+button.addEventListener("click", function(e) {
+
+	getJSON("http://code.eduweb.pl/bootcamp/users/", function(data) {
+	
+		console.log("Udało się");
+		
+		wynik.textContent = data;
+		
+		$.each(JSON.parse(data), function(key, val) {
+		});
+		},
+		
+		function(err) {
+		
+		console.log("Błąd - brak danych");
+		
+		console.log(err.message);
+		});
+
+		}, false);
+		
+})();
+</script>
+
+</body>
+</html>

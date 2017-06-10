@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+<title>javascriptt3z3</title>
+<h1>Ajaxowy polyfill dla funkcji fetch</h1>
+<body>
+<!--
+Napisz polyfill dla funkcji fetch (nie będziemy się tutaj trzymać dokładnie tego, w jaki
+sposób ona działa, stworzysz jedynie prostą jej wersję). Wykorzystaj obiekt
+XMLHttpRequest w ten sposób, aby docelowo korzystanie z funkcji fetch wyglądało
+następująco:
+fetch("url", function(data) {
+console.log("Sukces");
+console.log(data);
+}, function(err) {
+console.log("Wystąpił błąd!");
+console.log(err);
+});
+a zatem jako pierwszy argument przekazujemy adres URL (wyślij pod niego zapytanie
+GET), jako drugi funkcję, którą należy wykonać jeśli wszystko się powiedzie (przekaż jej
+pobrane dane), a jako trzeci funkcję, która wykona się na wypadek błędu (przekaż jej
+obiekt z błędem lub komunikat tekstowy). W nowoczesnych przeglądarkach istnieje już
+funkcja fetch, a zatem aby jej nie nadpisywać, możesz nadać jej inną nazwę, np. fecz.
+Jako adres URL, z którego pobierane bedą dane, możesz wykorzystać http://
+code.eduweb.pl/bootcamp/users/
+-->
+
+<button id='button'>Zapytanie Ajax</button>
+<p id='wynik'> </p>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<script>
+(function() {
+
+function fecz(url, success, failure) {
+
+	var x = new XMLHttpRequest();
+	
+	x.open("GET", url, true);
+	
+	x.onload = function() {
+	
+	if(x.status==200) {
+		success(x.responseText);
+	} else {
+		failure (new Error("Wystąpił błąd numer: " + x.status) );
+		}
+	};
+	
+	x.onerror = function(e) {
+		failure (new Error("Wystąpił krytyczny błąd") );
+	};
+	
+	x.send();
+	
+	}
+
+var button = document.querySelector("#button");
+
+var wynik = document.querySelector("#wynik");
+
+button.addEventListener("click", function(e) {
+
+	fecz("http://code.eduweb.pl/bootcamp/users/", function(data) {
+	
+		console.log("Udało się");
+		
+		wynik.textContent = data;
+		
+		$.ajax(data, function(key, val) {
+		});
+		
+		},
+		
+		function(err) {
+		
+		console.log("Błąd - brak danych");
+		
+		console.log(err.message);
+		});
+
+		}, false);
+		
+})();
+
+</script>
+
+</body>
+</html>

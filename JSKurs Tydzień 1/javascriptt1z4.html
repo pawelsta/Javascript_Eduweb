@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+Stwórz funkcję o nazwie sum, która będzie przyjmowała jeden parametr, którym będzie
+tablica z liczbami. Funkcja ta powinna zsumować wszystkie liczby z przekazanej tablicy, a
+następnie zwrócić wynik takiej operacji.
+Przykładowe jej użycie powinno wyglądać tak:
+sum([1, 10, 5, 4]); // zwraca wartość 20
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Zadanie 4 Tydzień 1</title>
+  </head>
+  <body>
+<script>
+	var x = [10,28,2,15];
+	var result = 0;
+function sum(x) {
+		for (i=0; i<x.length; i++) {
+		result += x[i]};
+		return result;
+};
+console.log(sum(x));
+</script>
+</body>
+</html>

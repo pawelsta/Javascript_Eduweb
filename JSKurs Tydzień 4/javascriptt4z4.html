@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+<!--
+Stwórz aplikację, która pozwoli po kliknięciu wybranego przycisku, np. “Załaduj”, pobrać
+Ajaxem dane typu JSON i wyświetlić je na stronie. Adres, pod który wyślesz zapytanie z
+użyciem jQuery to http://code.eduweb.pl/bootcamp/users/
+Otrzymane dane wyświetl na stronie w formie nieuporządkowanej listy <ul>, a każdego
+użytkownika w tagu <li>. Z podanych danych wyłuskaj name, username, email oraz
+phone. Sformatuj je według własnego uznania.
+-->
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+<title>javascriptt4z4</title>
+<h1>Praca z Ajax i JSON</h1>
+<body>
+<button id='button'>Załaduj</button>
+<p id='wynik'> </p>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<script>  
+(function() {
+var button = document.querySelector("#button");
+var wynik = document.querySelector("#wynik");
+button.addEventListener("click", function(e) {
+	$.getJSON("http://code.eduweb.pl/bootcamp/users/", function(data) {
+	
+		console.log("Udało się");
+		
+		
+		var items = [];
+	  
+		$.each(data, function(key, val) {
+	  
+		items.push('<li id="' + key + '">' + 'Name: ' + val.name + '</br>' +
+		'Username: ' + val.username + '</br>' +
+		'Address: ' + '</br>' +
+		'E-mail: ' + val.email + '</br>' + 'Phone: ' + val.phone + '</li>');
+		});
+		
+		$('<ul/>', {
+			'class': 'interest-list',
+			html: items.join('')
+		}).appendTo('body');
+		
+		},
+		
+		function(err) {
+		
+		console.log("Błąd - brak danych");
+		
+		console.log(err.message);
+		});
+		}, false);
+		
+})();
+</script>
+
+</body>
+</html>

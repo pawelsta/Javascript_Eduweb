@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+Stwórz skrypt, który będzie wyświetlał filmy z podanego tutaj obiektu https://pastebin.com/
+kCbqehMm (oczywiście skopiuj ten kod i wstaw go do swojego skryptu zanim rozpoczniesz
+pracę).
+Skrypt powinien wyświetlać filmy z 3 kategorii (użyj do tego celu console.log()) w
+następujący sposób:
+Dla dzieci:
+Kubuś Puchatek i Przyjaciele
+Zwariowane Melodie
+Piotruś Pan
+=======================
+Dla młodzieży:
+Szkoła uczuć
+Podróż za jeden uśmiech
+Szatan z 7-ej klasy
+=======================
+Dla dorosłych:
+Gwiezdne Wojny
+Szklana Pułapka
+Titanic
+=======================
+Podpowiedź: skorzystaj najpierw z pętli for…in, aby iterować po obiekcie pod zmienną
+movies, a w tej pętli umieść pętlę for, którą będziesz iterował po tablicy z tytułami filmów.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Zadanie 2 Tydzień 1</title>
+  </head>
+  <body>
+<script>
+var movies = {
+    "Dla dzieci": [
+        "Kubuś Puchatek i Przyjaciele",
+        "Zwariowane Melodie",
+        "Piotruś Pan"
+    ],
+    "Dla młodzieży": [
+        "Szkoła uczuć",
+        "Podróż za jeden uśmiech",
+        "Szatan z 7-ej klasy"
+    ],
+    "Dla dorosłych": [
+        "Gwiezdne Wojny",
+        "Szklana Pułapka",
+        "Titanic"
+    ]
+};
+for (var key in movies) {
+	for (var i = 0; i<Array.length; i++) {
+	console.log(key + ': ' + '\n' + movies[key][i] + '\n' + movies[key][i+1] + '\n' + movies[key][i+2] + '\n' + '======================');
+};
+};
+</script>
+</body>
+</html>

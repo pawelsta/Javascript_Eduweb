@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- 
+Stwórz projekt z ukrytym elementem HTML (np. <div> z display:none w CSS), a także
+przyciskiem (<button>). Przypisz na kliknięcie przycisku funkcję, która pokaże ukryty
+element, gdy jest niewidoczny i ukryje go, gdy jest widoczny. Podczas zmiany stanu
+widoczności tego elementu, zmień również tekst przycisku np. z “Pokaż treść” na “Ukryj
+treść” i na odwrót. -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Zadanie 1 Tydzień 2</title>
+  </head>
+  <body>
+  <button id="button" type="button" onclick="call()">
+	Pokaż Tekst
+  </button>
+      <div id="lorem" style="display: none">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+            nisl ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+<script>
+var hidden = true;
+
+function showText() {
+document.getElementById('lorem').style.display = "block";
+document.getElementById('button').innerHTML = "Ukryj Tekst";
+}
+
+function hideText() {
+document.getElementById('lorem').style.display = "none";
+document.getElementById('button').innerHTML = "Pokaż Tekst";
+}
+
+function call(){
+   if(hidden) showText();
+  else hideText();
+  hidden = !hidden;
+}
+</script>
+</body>
+</html>
